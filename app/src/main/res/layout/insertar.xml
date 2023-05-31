@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:id="@+id/linearlayoutinsertar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3CA9FA"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/insert_person"
+            android:textSize="24sp"
+            android:gravity="center"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/etIngresarNombre"
+            android:hint="@string/name"
+            android:paddingTop="10dp"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/etIngresarTelefono"
+            android:hint="@string/phone"
+            android:paddingTop="10dp"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/etIngresarDetalle"
+            android:hint="@string/details"
+            android:paddingTop="10dp"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText
+            android:id="@+id/etIngresarAlias"
+            android:hint="@string/alias"
+            android:paddingTop="10dp"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/IngresarBtnAceptar"
+            android:text="@string/accept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

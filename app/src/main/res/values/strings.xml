@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Registro</string>
+    <string name="name">Ingrese Nombre</string>
+    <string name="name_lbl">Nombre:</string>
+    <string name="phone">Ingrese su Telefono</string>
+    <string name="phone_lbl">Telefono: </string>
+    <string name="details">Detalles</string>
+    <string name="details_lbl">Detalles:</string>
+    <string name="alias">Alias</string>
+    <string name="alias_lbl">Alias:</string>
+    <string name="date_lbl">Fecha de Registro:</string>
+    <string name="example">xxxxxxxxxxxxxx</string>
+    <string name="cancel">Cancelar</string>
+    <string name="accept">Aceptar</string>
+    <string name="add">Agregar</string>
+    <string name="delete">Borrar</string>
+    <string name="save">Guardar</string>
+
+    <string name="insert_person">Ingresar una Persona</string>
+
+</resources>

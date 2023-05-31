@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp">
+
+    <TextView
+        android:id="@+id/tvNombrelbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/name_lbl"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/Nombrelbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tvNombrelbl"
+        android:paddingLeft="10dp"
+        android:text="@string/example"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tvTelefonolbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvNombrelbl"
+        android:text="@string/phone_lbl"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/Telefonolbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Nombrelbl"
+        android:layout_toRightOf="@+id/tvTelefonolbl"
+        android:paddingLeft="10dp"
+        android:text="@string/example"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tvDetailslbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvTelefonolbl"
+        android:text="@string/details_lbl"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/Detailslbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Telefonolbl"
+        android:layout_toRightOf="@+id/tvDetailslbl"
+        android:paddingLeft="10dp"
+        android:text="@string/example"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tvAliaslbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDetailslbl"
+        android:text="@string/alias_lbl"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/Aliaslbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Detailslbl"
+        android:layout_toRightOf="@+id/tvAliaslbl"
+        android:paddingLeft="10dp"
+        android:text="@string/example"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tvFechalbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvAliaslbl"
+        android:text="@string/date_lbl"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/Fechalbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Aliaslbl"
+        android:layout_toRightOf="@+id/tvFechalbl"
+        android:paddingLeft="10dp"
+        android:text="@string/example"
+        android:textSize="24sp" />
+
+
+</RelativeLayout>

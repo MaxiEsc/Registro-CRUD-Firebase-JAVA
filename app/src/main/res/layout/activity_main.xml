@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutEditar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#2B98FA"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/etNombre"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name"
+            android:paddingTop="10dp"
+            android:textColor="@color/white" />
+
+        <EditText
+            android:id="@+id/etTelefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/phone"
+            android:inputType="number"
+            android:paddingTop="10dp"
+            android:textColor="@color/white" />
+
+        <EditText
+            android:id="@+id/etDetalle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/details"
+            android:paddingTop="10dp"
+            android:textColor="@color/design_default_color_primary" />
+
+        <EditText
+            android:id="@+id/etAlias"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/alias"
+            android:paddingTop="10dp"
+            android:textColor="@color/design_default_color_on_secondary" />
+
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:textAllCaps="false" />
+
+    </LinearLayout>
+    <ListView
+        android:id="@+id/lvRegistros"
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
