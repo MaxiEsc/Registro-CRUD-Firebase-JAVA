@@ -9,17 +9,7 @@ public class Registro {
     private String detalle;
     private String alias;
     private String fechaRegistro;
-    private String timestamp;
-
-    public Registro(String idRegistro, String nombre, String telefono, String detalle, String alias, String fechaRegistro, String timestamp) {
-        this.idRegistro = idRegistro;
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.detalle = detalle;
-        this.alias = alias;
-        this.fechaRegistro = fechaRegistro;
-        this.timestamp = timestamp;
-    }
+    private long timestamp;
 
     public String getIdRegistro() {
         return idRegistro;
@@ -69,11 +59,11 @@ public class Registro {
         this.fechaRegistro = fechaRegistro;
     }
 
-    public String getTimestamp() {
+    public long getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(String timestamp) {
+    public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
 
