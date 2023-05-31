@@ -1,2 +1,2 @@
 # Registro-CRUD-Firebase-JAVA
-Registro con las funcionalidades ABM de JAVA con Firebase
+Aplicacion de tipo "mobile" escrita en Java desde android Studio cuya funcionalidad es un Registro con las ABM(Alta, baja y Modificacion) con soporte de la tecnologia Firebase.
