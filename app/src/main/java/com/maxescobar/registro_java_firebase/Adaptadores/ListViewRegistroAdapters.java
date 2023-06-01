@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
 import android.widget.TextView;
 
 import com.maxescobar.registro_java_firebase.Models.Registro;
@@ -19,7 +20,6 @@ public class ListViewRegistroAdapters extends BaseAdapter {
     Context context;
     //Arreglo de Registros
     ArrayList<Registro> registroDato;
-    //
     LayoutInflater layoutInflater;
     //Nuestro objeto de tipo registro
     Registro registroModel;
@@ -76,4 +76,5 @@ public class ListViewRegistroAdapters extends BaseAdapter {
         //Retornamos la vista para que renderize
         return vistafila;
     }
+
 }

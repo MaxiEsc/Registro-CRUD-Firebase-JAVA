@@ -97,5 +97,4 @@
         android:text="@string/example"
         android:textSize="24sp" />
 
-
 </RelativeLayout>

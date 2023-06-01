@@ -55,8 +55,8 @@
             android:layout_height="wrap_content"
             android:text="@string/cancel"
             android:textAllCaps="false" />
-
     </LinearLayout>
+
     <ListView
         android:id="@+id/lvRegistros"
         android:layout_margin="15dp"
