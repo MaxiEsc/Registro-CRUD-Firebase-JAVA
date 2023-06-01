@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         linearLayoutEditar = (LinearLayout) findViewById(R.id.linearLayoutEditar);
 
         try {
+            //Objeto personalizado que reacciona al click de la fila
             listaRegistroPersonas.setOnItemClickListener((parent, view, position, id) -> {
                 itemSeleccionado = (Registro) parent.getItemAtPosition(position);
                 inputNombre.setText(itemSeleccionado.getNombre());
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         try {
+            //Boton personalizado que reacciona al click del mismo
             btnCancelar.setOnClickListener(v -> {
                 linearLayoutEditar.setVisibility(View.GONE);
                 itemSeleccionado = null;
@@ -90,14 +92,16 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        //inicia los servicios de Firebase
         inicializarFirebase();
+        //Carga los registros
         listarRegistro();
     }
 
     private void inicializarFirebase() {
 
         try {
-
+            //Comienza el servicio
             FirebaseApp.initializeApp(this);
             firebaseDatabase = FirebaseDatabase.getInstance();
             databaseReference = firebaseDatabase.getReference();
@@ -108,9 +112,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void listarRegistro() {
+        //linea para leer los archivos de Firebase NoSql y con la edicion de evento de carga
         databaseReference.child("Registro").orderByChild("timestamp").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //Limpia la lista y la vuelve a cargar
                 listaRegistros.clear();
                 for (DataSnapshot objeto : snapshot.getChildren()) {
                     Registro r = objeto.getValue(Registro.class);
@@ -127,20 +133,24 @@ public class MainActivity extends AppCompatActivity {
                 listaRegistroPersonas.setAdapter(listViewRegistroAdapters);
             }
 
+            //No se usa
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
     }
 
+    //Metodo Sobre escrito para cargar el menu personalizado
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.registro, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
+    //Metodo para la Seleccion de filas de los items
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //Variables que se utilizaran para guardar cambios en la BD
         String nombres = inputNombre.getText().toString();
         String telefono = inputTelefono.getText().toString();
         String detalles = inputDetalle.getText().toString();
@@ -155,23 +165,26 @@ public class MainActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.menu_Guardar) {
             guardar(nombres, telefono, detalles, alias);
         }
-
+        //Regresar el tipo de dato si se ha seleccionado
         return super.onOptionsItemSelected(item);
     }
 
     public void insertar() {
+        //Pop up que aparece para solicitar el ingreso de datos
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+        //Vista auxiliar que permitira la carga del panel de insercion de datos
         View miView = getLayoutInflater().inflate(R.layout.insertar, null);
         Button btnInsertar = (Button) miView.findViewById(R.id.IngresarBtnAceptar);
         final EditText mInputNombres = (EditText) miView.findViewById(R.id.etIngresarNombre);
         final EditText mInputTelefono = (EditText) miView.findViewById(R.id.etIngresarTelefono);
         final EditText mInputAlias = (EditText) miView.findViewById(R.id.etIngresarAlias);
         final EditText mInputDetalle = (EditText) miView.findViewById(R.id.etIngresarDetalle);
-
+        //Enviar al usuario la vista adicional
         mBuilder.setView(miView);
         final AlertDialog dialog = mBuilder.create();
         dialog.show();
 
+        //Accion del boton insertar sobre el click
         btnInsertar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -180,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
                 String detalles = mInputDetalle.getText().toString();
                 String alias = mInputAlias.getText().toString();
 
+                //Condiciones sobre la carga de las etradas de datos
                 if (nombres.isEmpty() || detalles.isEmpty() || alias.isEmpty()) {
                     showError(mInputNombres, "Nombre Incorrecto o campo vacio (Min. 3 letras)");
                     showError(mInputDetalle, "Detalle Incorrecto o campo vacio (Min. 3 letras)");
@@ -195,11 +209,12 @@ public class MainActivity extends AppCompatActivity {
                     r.setAlias(alias);
                     r.setFechaRegistro(getFechaNormal(getFechaMilisegundos()));
                     r.setTimestamp(getFechaMilisegundos() * -1);
+                    //Linea de firebase que permite la carga de registro en firebase de google
                     databaseReference.child("Registro").child(r.getIdRegistro()).setValue(r);
                     Toast.makeText(MainActivity.this,
                             "Registrado correctamente",
                             Toast.LENGTH_SHORT).show();
-
+                    //Ocultar el dialog que muestra al insertar
                     dialog.dismiss();
                 }
             }
@@ -210,6 +225,7 @@ public class MainActivity extends AppCompatActivity {
         if (itemSeleccionado != null) {
             Registro r = new Registro();
             r.setIdRegistro(itemSeleccionado.getIdRegistro());
+            //linea que permite el borrado de los datos en la base de datos NOSQL de firebase
             databaseReference.child("Registro").child(r.getIdRegistro()).removeValue();
             linearLayoutEditar.setVisibility(View.GONE);
             itemSeleccionado = null;
@@ -230,6 +246,7 @@ public class MainActivity extends AppCompatActivity {
                 r.setDetalle(detalle);
                 r.setFechaRegistro(itemSeleccionado.getFechaRegistro());
                 r.setTimestamp(itemSeleccionado.getTimestamp());
+                //Linea que permite el guardao de datos por registro
                 databaseReference.child("Registro").child(r.getIdRegistro()).setValue(r);
                 Toast.makeText(this, "Actualizado Correctamente", Toast.LENGTH_LONG).show();
                 linearLayoutEditar.setVisibility(View.GONE);
@@ -241,22 +258,26 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Metodo para mostrar errores a los usuarios
     public void showError(EditText input, String a) {
         input.requestFocus();
         input.setError(a);
     }
 
+    //Metodo para Obtener fecha de manera numerica
     public long getFechaMilisegundos() {
         Calendar calendar = Calendar.getInstance();
         return calendar.getTimeInMillis();
     }
 
+    //Fecha legible para las personas
     public String getFechaNormal(long f) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         sdf.setTimeZone(TimeZone.getTimeZone("GMT-3"));
         return sdf.format(f);
     }
 
+    //Control de validacion de entradas
     public boolean validarEntradas() {
         String nombre = inputNombre.getText().toString();
         String telefono = inputTelefono.getText().toString();

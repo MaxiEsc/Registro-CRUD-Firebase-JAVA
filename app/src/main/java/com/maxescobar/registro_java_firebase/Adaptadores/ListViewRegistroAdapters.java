@@ -48,6 +48,7 @@ public class ListViewRegistroAdapters extends BaseAdapter {
         return 0;
     }
 
+    //Vista personalizada
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View vistafila = convertView;
